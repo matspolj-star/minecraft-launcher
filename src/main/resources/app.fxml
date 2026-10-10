@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.minecraftlauncher.MainController"
+            styleClass="root-pane">
+
+    <VBox spacing="20" AnchorPane.topAnchor="24" AnchorPane.leftAnchor="24"
+          AnchorPane.rightAnchor="24" AnchorPane.bottomAnchor="24">
+
+        <HBox spacing="18" alignment="CENTER_LEFT">
+            <Label text="MINECRAFT" styleClass="brand-title"/>
+            <Label text="Launcher" styleClass="brand-subtitle"/>
+        </HBox>
+
+        <HBox spacing="24" VBox.vgrow="ALWAYS">
+
+            <VBox styleClass="panel account-panel" minWidth="320" prefWidth="360" spacing="18">
+                <HBox spacing="14" alignment="CENTER_LEFT">
+                    <Circle radius="20" styleClass="avatar-ring"/>
+                    <VBox spacing="2">
+                        <Label text="Account" styleClass="panel-title"/>
+                        <Label fx:id="accountNameLabel" text="Not signed in" styleClass="account-name"/>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="8">
+                    <Label text="Username / email" styleClass="field-label"/>
+                    <TextField fx:id="usernameField" promptText="Enter username or email" styleClass="text-field"/>
+                </VBox>
+
+                <VBox spacing="8">
+                    <Label text="Password" styleClass="field-label"/>
+                    <PasswordField fx:id="passwordField" promptText="Enter password" styleClass="text-field"/>
+                </VBox>
+
+                <Button fx:id="loginButton" text="Login with Microsoft" styleClass="primary-button" onAction="#handleLogin"/>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Status:" styleClass="field-label"/>
+                    <Label fx:id="loginStatusLabel" text="Ready" styleClass="status-label"/>
+                </HBox>
+            </VBox>
+
+            <VBox styleClass="panel content-panel" HBox.hgrow="ALWAYS" spacing="18">
+                <HBox spacing="18" alignment="CENTER_LEFT">
+                    <Label text="Profiles" styleClass="panel-title"/>
+                    <Button text="Add profile" styleClass="secondary-button"/>
+                </HBox>
+
+                <HBox spacing="18" VBox.vgrow="ALWAYS">
+                    <VBox styleClass="profile-card" prefWidth="220" spacing="10">
+                        <Label text="Vanilla" styleClass="profile-tag"/>
+                        <Label text="1.20.4" styleClass="profile-version"/>
+                        <Label text="Java 17" styleClass="muted-text"/>
+                        <Button text="Play" styleClass="play-button" onAction="#handlePlay"/>
+                    </VBox>
+
+                    <VBox styleClass="profile-card" prefWidth="220" spacing="10">
+                        <Label text="Fabric" styleClass="profile-tag"/>
+                        <Label text="1.20.1" styleClass="profile-version"/>
+                        <Label text="Fabric loader" styleClass="muted-text"/>
+                        <Button text="Play" styleClass="play-button" onAction="#handlePlay"/>
+                    </VBox>
+
+                    <VBox styleClass="profile-card" prefWidth="220" spacing="10">
+                        <Label text="Forge" styleClass="profile-tag"/>
+                        <Label text="1.19.2" styleClass="profile-version"/>
+                        <Label text="Recommended" styleClass="muted-text"/>
+                        <Button text="Play" styleClass="play-button" onAction="#handlePlay"/>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="10">
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="Version" styleClass="field-label"/>
+                        <ComboBox fx:id="versionComboBox" prefWidth="180" styleClass="combo-box"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Memory" styleClass="field-label"/>
+                        <Slider fx:id="memorySlider" min="2" max="12" value="6" blockIncrement="1" majorTickUnit="2" minorTickCount="1" snapToTicks="true" showTickLabels="true" showTickMarks="true" prefWidth="220"/>
+                        <Label fx:id="memoryLabel" text="6 GB" styleClass="status-label"/>
+                    </HBox>
+
+                    <HBox spacing="14" alignment="CENTER_LEFT">
+                        <Label text="Java" styleClass="field-label"/>
+                        <Label fx:id="javaLabel" text="Detecting..." styleClass="status-label"/>
+                    </HBox>
+                </VBox>
+
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Button text="Launch" fx:id="playButton" styleClass="primary-button" onAction="#handlePlay"/>
+                    <Button text="Settings" styleClass="secondary-button" onAction="#handleSettings"/>
+                </HBox>
+
+                <VBox spacing="8">
+                    <Label text="Launcher status" styleClass="field-label"/>
+                    <ProgressBar fx:id="progressBar" prefWidth="560" progress="0.0" styleClass="progress-bar"/>
+                    <Label fx:id="statusLabel" text="Ready to launch" styleClass="status-label"/>
+                </VBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</AnchorPane>
